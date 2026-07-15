@@ -1,0 +1,9 @@
+# Go build and test artifacts
+/idasen
+/*.test
+/coverage.out
+
+# Nix build and development artifacts
+/result
+/result-*
+/.direnv/

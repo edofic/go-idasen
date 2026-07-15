@@ -1,0 +1,14 @@
+{
+    "id": "idasenDesk",
+    "name": "IDÅSEN Desk",
+    "description": "Live height monitoring and controls for an IKEA IDÅSEN desk",
+    "version": "1.0.0",
+    "author": "go-idasen",
+    "type": "widget",
+    "capabilities": ["dankbar-widget", "command-execution"],
+    "component": "./IdasenWidget.qml",
+    "settings": "./IdasenSettings.qml",
+    "icon": "desk",
+    "requires_dms": ">=1.4.0",
+    "permissions": ["process", "settings_read", "settings_write"]
+}
