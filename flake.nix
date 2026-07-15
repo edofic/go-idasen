@@ -47,6 +47,7 @@
             meta = {
               description = "Controller and DMS widget for IKEA IDÅSEN desks";
               homepage = "https://github.com/edofic/go-idasen";
+              license = nixpkgs.lib.licenses.mit;
               mainProgram = "idasen";
               platforms = nixpkgs.lib.platforms.linux;
             };
