@@ -9,6 +9,9 @@ Linux network capabilities.
 
 Inspired by [newAM/idasen](https://github.com/newAM/idasen/).
 
+<img width="786" height="804" alt="1784104509430179754" src="https://github.com/user-attachments/assets/9a535184-6cf1-4b45-9804-dd05a9bbf734" />
+
+
 ## Features
 
 - Read the current height and movement speed.
