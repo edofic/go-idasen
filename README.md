@@ -2,7 +2,7 @@
 
 `idasen` controls IKEA IDÅSEN desks and compatible Linak controllers over
 Bluetooth Low Energy. It includes a CLI, a portable system tray menu, a
-streaming controller API, and a native DankMaterialShell widget.
+streaming controller API, and native Omarchy and DankMaterialShell widgets.
 
 The Linux implementation uses BlueZ over D-Bus. It does not require root or
 Linux network capabilities.
@@ -18,6 +18,7 @@ Inspired by [newAM/idasen](https://github.com/newAM/idasen/).
 - Move to an exact height or a named saved position.
 - Save and delete any number of named positions.
 - Portable StatusNotifierItem tray menu.
+- Native Omarchy bar widget and keyboard-friendly popup.
 - Native DankMaterialShell bar widget and persistent popout.
 - Live height feedback while the desk moves.
 - Sit, Stand, Stop, and configurable fine-adjustment controls.
@@ -94,6 +95,34 @@ all saved positions. The desktop shell renders the menu in its native style.
 The tray is the portable interface. Standard DBus menus cannot contain numeric
 inputs or control whether the shell closes them after an action; use the DMS
 widget for the full interactive experience.
+
+## Omarchy plugin
+
+Install the controller first. With Go 1.24 or newer:
+
+```sh
+omarchy pkg add go
+GOBIN="$HOME/.local/bin" go install github.com/edofic/go-idasen@latest
+mv ~/.local/bin/go-idasen ~/.local/bin/idasen
+idasen init
+```
+
+Then install and enable the plugin directly from this repository:
+
+```sh
+omarchy plugin add https://github.com/edofic/go-idasen.git --enable
+```
+
+Choose the right bar section if prompted. The widget shows live height and
+movement state and provides Sit, Stand, Stop, fine Up/Down adjustment, and
+editable Sit/Stand heights. It uses the same `idasen.yaml` as the CLI. The
+default adjustment step is 5 mm; change `adjustmentMm` in the widget settings.
+
+Remove it with:
+
+```sh
+omarchy plugin remove edofic.idasen-desk
+```
 
 ## DankMaterialShell widget
 
