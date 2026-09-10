@@ -140,8 +140,7 @@ func run(args []string, stdout, stderr io.Writer) int {
 		return deletePosition(remaining[1:], path, &cfg, stdout, stderr)
 	}
 	if command == "pair" {
-		fmt.Fprintln(stderr, "Pairing is managed by the operating system; pair the desk with bluetoothctl or your system Bluetooth settings.")
-		return 1
+		return pair(path, cfg, stdout, stderr)
 	}
 	if *mac == "" {
 		fmt.Fprintln(stderr, "mac_address must be provided via --mac-address or the config file")

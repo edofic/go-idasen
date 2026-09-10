@@ -28,12 +28,17 @@ Inspired by [newAM/idasen](https://github.com/newAM/idasen/).
 
 The supported desk range is 62–127 cm.
 
-## Pair and configure
+## Connect and configure
 
-Pair the desk using your desktop Bluetooth settings or `bluetoothctl`. Pairing
-is intentionally left to the operating system.
+The desk uses a direct Bluetooth Low Energy connection and does not need to be
+paired in the desktop Bluetooth settings. Press a desk control button to wake
+it, then scan for it and save its address:
 
-Create the initial configuration and discover a nearby desk:
+```sh
+idasen pair
+```
+
+To create the initial configuration and discover a nearby desk in one step:
 
 ```sh
 idasen init

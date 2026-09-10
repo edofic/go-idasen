@@ -43,7 +43,36 @@ func initialize(args []string, path string, cfg Config, stdout, stderr io.Writer
 		return 1
 	}
 	fmt.Fprintf(stderr, "Created new configuration file at: %s\n", path)
-	fmt.Fprintln(stdout, "Pair the desk through your operating system's Bluetooth settings if needed.")
+	fmt.Fprintln(stdout, "The desk connects directly over Bluetooth Low Energy; desktop Bluetooth pairing is not required.")
+	return 0
+}
+
+func pair(path string, cfg Config, stdout, stderr io.Writer) int {
+	if err := PrepareBluetooth(); err != nil {
+		fmt.Fprintln(stderr, err)
+		return 1
+	}
+	fmt.Fprintln(stderr, "Scanning for an advertising IDÅSEN desk…")
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	mac, err := Discover(ctx)
+	if err != nil {
+		fmt.Fprintln(stderr, err)
+		return 1
+	}
+	if mac == "" {
+		fmt.Fprintln(stderr, "No IDÅSEN desk found. Press a desk control button to wake it, move close to the desk, and try again.")
+		return 1
+	}
+	cfg.MACAddress = mac
+	if len(cfg.Positions) == 0 {
+		cfg.Positions = map[string]float64{"sit": .75, "stand": 1.1}
+	}
+	if err := save(path, cfg); err != nil {
+		fmt.Fprintln(stderr, err)
+		return 1
+	}
+	fmt.Fprintf(stdout, "Connected configuration to IDÅSEN desk %s. Bluetooth pairing is not required.\n", mac)
 	return 0
 }
 
