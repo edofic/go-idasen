@@ -123,6 +123,8 @@ movement state and provides Sit, Stand, Stop, fine Up/Down adjustment, and
 editable Sit/Stand heights. It uses the same `idasen.yaml` as the CLI. The
 default adjustment step is 5 mm; change `adjustmentMm` in the widget settings.
 
+![IDÅSEN Omarchy widget popup](docs/omarchy-widget.png)
+
 Remove it with:
 
 ```sh

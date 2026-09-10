@@ -113,7 +113,10 @@ func (d *Desk) write(uuid string, value []byte, noResponse bool) error {
 	} else {
 		_, err = c.Write(value)
 	}
-	return err
+	if err != nil {
+		return fmt.Errorf("write %s (without response=%t): %w", uuid, noResponse, err)
+	}
+	return nil
 }
 
 // Wakeup supports both original IDÅSEN and Linak DPG1C controllers.
@@ -124,7 +127,7 @@ func (d *Desk) Wakeup() error {
 	if err := d.write(dpgUUID, []byte{0x7f, 0x86, 0x80, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}, false); err != nil {
 		return err
 	}
-	return d.write(commandUUID, cmdWakeup, false)
+	return d.write(commandUUID, cmdWakeup, true)
 }
 
 func (d *Desk) MoveUp() error   { return d.write(commandUUID, cmdUp, true) }
