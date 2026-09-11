@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "edofic.idasen-desk",
   "name": "IDÅSEN Desk",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "Andraz Bajt",
   "description": "Live height monitoring and controls for an IKEA IDÅSEN desk",
   "kinds": ["bar-widget"],

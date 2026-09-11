@@ -107,18 +107,18 @@ Install the controller first. With Go 1.24 or newer:
 
 ```sh
 omarchy pkg add go
-GOBIN="$HOME/.local/bin" go install github.com/edofic/go-idasen@v0.2.3
+GOBIN="$HOME/.local/bin" go install github.com/edofic/go-idasen@v0.2.4
 mv ~/.local/bin/go-idasen ~/.local/bin/idasen
 idasen init
 ```
 
-The Omarchy manifest and Go module use the same release version. Tag `v0.2.3`
-points to the exact source commit containing manifest version `0.2.3`, including
+The Omarchy manifest and Go module use the same release version. Tag `v0.2.4`
+points to the exact source commit containing manifest version `0.2.4`, including
 the controller and QML plugin reviewed together. Verify an installed binary with:
 
 ```sh
-go version -m "$HOME/.local/bin/idasen" | grep 'github.com/edofic/go-idasen.*v0.2.3'
-git ls-remote https://github.com/edofic/go-idasen.git refs/tags/v0.2.3
+go version -m "$HOME/.local/bin/idasen" | grep 'github.com/edofic/go-idasen.*v0.2.4'
+git ls-remote https://github.com/edofic/go-idasen.git refs/tags/v0.2.4
 ```
 
 Then install and enable the plugin directly from this repository:
@@ -132,7 +132,7 @@ movement state and provides Sit, Stand, Stop, fine Up/Down adjustment, and
 editable Sit/Stand heights. It uses the same `idasen.yaml` as the CLI. The
 default adjustment step is 5 mm; change `adjustmentMm` in the widget settings.
 
-![IDÅSEN Omarchy widget popup](screenshot.png)
+![IDÅSEN Omarchy widget popup](preview.png)
 
 Remove it with:
 
